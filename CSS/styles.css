@@ -1,0 +1,51 @@
+/* styles.css */
+:root {
+    --primary-color: #6e3a8e;
+    --secondary-color: #4a2d5e;
+    --accent-color: #e0a84e;
+    --background: #1a1a1a; /* Color de fondo principal */
+    --text-color: #f0f0f0;
+    --card-bg: #2d2d2d;
+}
+
+/* Aplica el fondo a toda la página */
+html, body {
+    height: 100%;
+    background-color: var(--background) !important; /* Fuerza el color */
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--text-color);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Contenedor principal */
+.container {
+    flex: 1;
+    padding: 20px 0;
+}
+
+/* Formularios y tarjetas */
+.bg-dark {
+    background-color: var(--card-bg) !important; /* Asegura consistencia */
+    border-radius: 8px;
+    padding: 20px;
+}
+
+/* Footer */
+footer {
+    background-color: var(--secondary-color) !important;
+    color: white;
+    text-align: center;
+    padding: 1.5rem;
+    width: 100%;
+}
+
+p{
+    color: white;
+}
