@@ -21,7 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (password_verify($password, $row['password'])) {
             $_SESSION['user_id'] = $row['id'];  // Guardar el ID del usuario en la sesión
             $_SESSION['username'] = $row['username'];
-            header("Location: ../foro.html");  // Redirigir al foro
+            header("Location: ../foro.php");  // Redirigir al foro
         } else {
             echo "Contraseña incorrecta.";
         }

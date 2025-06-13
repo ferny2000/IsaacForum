@@ -67,7 +67,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             VALUES ('$title', '$content', '$user_id', '$image_url')";
     if ($conn->query($sql) === TRUE) {
         echo "Publicación creada con éxito.";
-        header("Location: ../foro.html");  // Redirigir al foro
+        header("Location: ../foro.php");  // Redirigir al foro
     } else {
         echo "Error al crear la publicación: " . $conn->error;
     }
