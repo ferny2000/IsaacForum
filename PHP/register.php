@@ -41,7 +41,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Registro exitoso
         $stmt->close();
         $conn->close();
-        header("Location: ../login.html");
+        header("Location: ../login.php");
         exit();
     } else {
         // Manejo de errores
@@ -53,7 +53,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 } else {
     // Si no es una solicitud POST, redirigir
-    header("Location: register.html");
+    header("Location: register.php");
     exit();
 }
 ?>

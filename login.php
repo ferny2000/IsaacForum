@@ -3,20 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registrarse - Isaac Forum</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
+    <title>Iniciar sesión - Isaac Forum</title>
     <link rel="stylesheet" href="./CSS/styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
+<style>
+    body{
+        background-color: #1a1a1a;
+    }
+</style>
 <body>
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #4a2d5e;">
         <div class="container-fluid">
             <a class="navbar-brand" href="#"><i class="fas fa-dungeon me-2"></i>Isaac Forum</a>
             <ul class="navbar-nav ms-auto">
-                <li class="nav-item"><a class="nav-link" href="index.html"><i class="fas fa-home me-1"></i>Inicio</a></li>
+                <li class="nav-item"><a class="nav-link" href="index.php"><i class="fas fa-home me-1"></i>Inicio</a></li>
                 <li class="nav-item"><a class="nav-link" href="foro.php"><i class="fas fa-comments me-1"></i>Foro</a></li>
-                <li class="nav-item"><a class="nav-link" href="login.html"><i class="fas fa-sign-in-alt me-1"></i>Iniciar sesión</a></li>
+                <li class="nav-item"><a class="nav-link" href="register.php"><i class="fas fa-user-plus me-1"></i>Registrarse</a></li>
             </ul>
         </div>
     </nav>
@@ -26,16 +31,11 @@
         <div class="row justify-content-center">
             <div class="col-md-6">
                 <section>
-                    <h2 class="text-warning mb-4 text-center"><i class="fas fa-user-plus me-2"></i>Registrarse</h2>
-                    <form action="./PHP/register.php" method="POST" class="bg-dark p-4 rounded-4 shadow">
+                    <h2 class="text-warning mb-4 text-center"><i class="fas fa-sign-in-alt me-2"></i>Iniciar sesión</h2>
+                    <form action="./PHP/login.php" method="POST" class="bg-dark p-4 rounded-4 shadow">
                         <div class="mb-3">
                             <label for="username" class="form-label text-white"><i class="fas fa-user me-1"></i>Usuario</label>
                             <input type="text" class="form-control" name="username" required>
-                        </div>
-
-                        <div class="mb-3">
-                            <label for="email" class="form-label text-white"><i class="fas fa-envelope me-1"></i>Correo electrónico</label>
-                            <input type="email" class="form-control" name="email" required>
                         </div>
 
                         <div class="mb-3">
@@ -44,7 +44,7 @@
                         </div>
 
                         <div class="d-grid">
-                            <button type="submit" class="btn btn-warning"><i class="fas fa-user-plus me-1"></i>Registrarse</button>
+                            <button type="submit" class="btn btn-warning"><i class="fas fa-sign-in-alt me-1"></i>Entrar</button>
                         </div>
                     </form>
                 </section>

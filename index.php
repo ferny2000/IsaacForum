@@ -8,6 +8,11 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
+<style>
+    body{
+        background-color: #1a1a1a;
+    }
+</style>
 <body>
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #4a2d5e;">
@@ -15,8 +20,8 @@
             <a class="navbar-brand" href="#"><i class="fas fa-dungeon me-2"></i>Isaac Forum</a>
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item"><a class="nav-link" href="foro.php"><i class="fas fa-comments me-1"></i>Foro</a></li>
-                <li class="nav-item"><a class="nav-link" href="login.html"><i class="fas fa-sign-in-alt me-1"></i>Iniciar sesión</a></li>
-                <li class="nav-item"><a class="nav-link" href="register.html"><i class="fas fa-user-plus me-1"></i>Registrarse</a></li>
+                <li class="nav-item"><a class="nav-link" href="login.php"><i class="fas fa-sign-in-alt me-1"></i>Iniciar sesión</a></li>
+                <li class="nav-item"><a class="nav-link" href="register.php"><i class="fas fa-user-plus me-1"></i>Registrarse</a></li>
             </ul>
         </div>
     </nav>
@@ -30,11 +35,11 @@
 
         <!-- Sección de Cuadros -->
         <section class="my-5">
-            <h2 class="text-warning mb-4"><i class="fas fa-compass me-2"></i>Explora el Foro</h2>
+            <h2 class="text-warning mb-4"><i class="fas fa-compass me-2"></i>Explora la informacion del juego</h2>
             <div class="row g-4">
                 <!-- Logros -->
                 <div class="col-md-4 col-sm-6">
-                    <a href="foro.php?seccion=logros" class="text-decoration-none">
+                    <a href="info.php#logros-section" class="text-decoration-none">
                         <div class="card h-100 border-0 rounded-4 section-card">
                             <div class="card-body text-center p-4">
                                 <div class="icon-wrapper mb-3">
@@ -49,7 +54,7 @@
                 
                 <!-- Monstruos/Cartas/Runas -->
                 <div class="col-md-4 col-sm-6">
-                    <a href="foro.php?seccion=monstruos" class="text-decoration-none">
+                    <a href="info.php#cartas-section" class="text-decoration-none">
                         <div class="card h-100 border-0 rounded-4 section-card">
                             <div class="card-body text-center p-4">
                                 <div class="icon-wrapper mb-3">
@@ -64,7 +69,7 @@
                 
                 <!-- Jefes -->
                 <div class="col-md-4 col-sm-6">
-                    <a href="foro.php?seccion=jefes" class="text-decoration-none">
+                    <a href="info.php#jefes-section" class="text-decoration-none">
                         <div class="card h-100 border-0 rounded-4 section-card">
                             <div class="card-body text-center p-4">
                                 <div class="icon-wrapper mb-3">
@@ -79,7 +84,7 @@
                 
                 <!-- Personajes -->
                 <div class="col-md-4 col-sm-6">
-                    <a href="foro.php?seccion=personajes" class="text-decoration-none">
+                    <a href="info.php#personajes-section" class="text-decoration-none">
                         <div class="card h-100 border-0 rounded-4 section-card">
                             <div class="card-body text-center p-4">
                                 <div class="icon-wrapper mb-3">
@@ -94,7 +99,7 @@
                 
                 <!-- Píldoras/Transformaciones -->
                 <div class="col-md-4 col-sm-6">
-                    <a href="foro.php?seccion=pildoras" class="text-decoration-none">
+                    <a href="info.php#pildoras-section" class="text-decoration-none">
                         <div class="card h-100 border-0 rounded-4 section-card">
                             <div class="card-body text-center p-4">
                                 <div class="icon-wrapper mb-3">
@@ -109,7 +114,7 @@
                 
                 <!-- Niveles/Trinkets -->
                 <div class="col-md-4 col-sm-6">
-                    <a href="foro.php?seccion=niveles" class="text-decoration-none">
+                    <a href="info.php#niveles-section" class="text-decoration-none">
                         <div class="card h-100 border-0 rounded-4 section-card">
                             <div class="card-body text-center p-4">
                                 <div class="icon-wrapper mb-3">
