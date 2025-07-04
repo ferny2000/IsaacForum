@@ -1,3 +1,8 @@
+<?php
+session_start()
+?>
+
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -14,17 +19,41 @@
     }
 </style>
 <body>
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #4a2d5e;">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#"><i class="fas fa-dungeon me-2"></i>Isaac Forum</a>
-            <ul class="navbar-nav ms-auto">
-                <li class="nav-item"><a class="nav-link" href="foro.php"><i class="fas fa-comments me-1"></i>Foro</a></li>
-                <li class="nav-item"><a class="nav-link" href="login.php"><i class="fas fa-sign-in-alt me-1"></i>Iniciar sesión</a></li>
-                <li class="nav-item"><a class="nav-link" href="register.php"><i class="fas fa-user-plus me-1"></i>Registrarse</a></li>
-            </ul>
-        </div>
-    </nav>
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #4a2d5e;">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#"><i class="fas fa-dungeon me-2"></i>Isaac Forum</a>
+        <ul class="navbar-nav ms-auto">
+            <li class="nav-item"><a class="nav-link" href="foro.php"><i class="fas fa-comments me-1"></i>Foro</a></li>
+            
+
+            <?php if (isset($_SESSION['user_id'])): ?>
+                <!-- Si el usuario está logueado, mostrar su nombre y opción para cerrar sesión -->
+                <li class="nav-item">
+                    <span class="nav-link">Bienvenido, <?php echo $_SESSION['username']; ?></span>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="./PHP/logout.php"><i class="fas fa-sign-out-alt me-1"></i>Cerrar sesión</a>
+                </li>
+                <?php if ($_SESSION['es_admin'] == 1): ?>
+                    <!-- Si es admin, mostrar la opción de admin -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="admin_panel.php"><i class="fas fa-cogs me-1"></i>Panel de Admin</a>
+                    </li>
+                <?php endif; ?>
+            <?php else: ?>
+                <!-- Si el usuario no está logueado, mostrar el link para iniciar sesión -->
+                <li class="nav-item">
+                    <a class="nav-link" href="login.php"><i class="fas fa-sign-in-alt me-1"></i>Iniciar sesión</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="register.php"><i class="fas fa-user-plus me-1"></i>Registrarse</a>
+                </li>
+            <?php endif; ?>
+        </ul>
+    </div>
+</nav>
+
 
     <!-- Contenido Principal -->
     <div class="container my-5">

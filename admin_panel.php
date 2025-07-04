@@ -1,8 +1,9 @@
 <?php
-session_start()
+session_start();
 ?>
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,72 +13,42 @@ session_start()
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <style>
-    body{
+    body {
         background-color: #1a1a1a;
     }
 </style>
+
 <body>
     <!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #4a2d5e;">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="#"><i class="fas fa-dungeon me-2"></i>Isaac Forum</a>
-        <ul class="navbar-nav ms-auto">
-            <li class="nav-item"><a class="nav-link" href="index.php"><i class="fas fa-home me-1"></i>Inicio</a></li>
+    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #4a2d5e;">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#"><i class="fas fa-dungeon me-2"></i>Isaac Forum</a>
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="index.php"><i class="fas fa-home me-1"></i>Inicio</a></li>
 
-            <?php if (isset($_SESSION['user_id'])): ?>
-                <!-- Si el usuario está logueado, mostrar su nombre y opción para cerrar sesión -->
-                <li class="nav-item">
-                    <span class="nav-link">Bienvenido, <?php echo $_SESSION['username']; ?></span>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="./PHP/logout.php"><i class="fas fa-sign-out-alt me-1"></i>Cerrar sesión</a>
-                </li>
-                <?php if ($_SESSION['es_admin'] == 1): ?>
-                    <!-- Si es admin, mostrar la opción de admin -->
+                <?php if (isset($_SESSION['user_id'])): ?>
+                    <!-- Si el usuario está logueado, mostrar su nombre y opción para cerrar sesión -->
                     <li class="nav-item">
-                        <a class="nav-link" href="admin_panel.php"><i class="fas fa-cogs me-1"></i>Panel de Admin</a>
+                        <span class="nav-link">Bienvenido, <?php echo $_SESSION['username']; ?></span>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./PHP/logout.php"><i class="fas fa-sign-out-alt me-1"></i>Cerrar sesión</a>
+                    </li>
+                <?php else: ?>
+                    <!-- Si el usuario no está logueado, mostrar los links para iniciar sesión y registrarse -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="login.php"><i class="fas fa-sign-in-alt me-1"></i>Iniciar sesión</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="register.php"><i class="fas fa-user-plus me-1"></i>Registrarse</a>
                     </li>
                 <?php endif; ?>
-            <?php else: ?>
-                <!-- Si el usuario no está logueado, mostrar los links para iniciar sesión y registrarse -->
-                <li class="nav-item">
-                    <a class="nav-link" href="login.php"><i class="fas fa-sign-in-alt me-1"></i>Iniciar sesión</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="register.php"><i class="fas fa-user-plus me-1"></i>Registrarse</a>
-                </li>
-            <?php endif; ?>
-        </ul>
-    </div>
-</nav>
-
+            </ul>
+        </div>
+    </nav>
 
     <!-- Contenedor Principal -->
     <div class="container my-5">
-        <!-- Crear publicación -->
-        <section>
-            <h2 class="text-warning"><i class="fas fa-plus-circle me-2"></i>Crear una publicación</h2>
-            <form action="./PHP/upload_post.php" method="POST" enctype="multipart/form-data"
-                class="bg-dark p-4 rounded-4 shadow">
-                <div class="mb-3">
-                    <label for="title" class="form-label text-white"><i class="fas fa-heading me-1"></i>Título</label>
-                    <input type="text" class="form-control" name="title" required>
-                </div>
-
-                <div class="mb-3">
-                    <label for="content" class="form-label text-white"><i class="fas fa-align-left me-1"></i>Contenido</label>
-                    <textarea class="form-control" name="content" rows="5" required></textarea>
-                </div>
-
-                <div class="mb-3">
-                    <label for="image" class="form-label text-white"><i class="fas fa-image me-1"></i>Imagen</label>
-                    <input type="file" class="form-control" name="image" accept="image/*">
-                </div>
-
-                <button type="submit" class="btn btn-warning"><i class="fas fa-paper-plane me-1"></i>Publicar</button>
-            </form>
-        </section>
-        
         <!-- Lista de publicaciones -->
         <section class="my-5">
             <h2 class="text-warning"><i class="fas fa-comments me-2"></i>Publicaciones</h2>
@@ -116,6 +87,12 @@ session_start()
                         echo '    </div>';
                         echo '    <div class="card-footer text-muted bg-secondary">';
                         echo '      <small><i class="far fa-clock me-1"></i>' . date('d/m/Y H:i', strtotime($row['created_at'])) . '</small>';
+
+
+                        // Eliminar publicación
+                        echo '      <a href="./PHP/delete_post.php?id=' . $row['id'] . '" class="btn btn-danger btn-sm float-end" onclick="return confirm(\'¿Estás seguro de que quieres eliminar esta publicación?\')"><i class="fas fa-trash me-1"></i>Eliminar</a>';
+
+
                         echo '    </div>';
                         echo '  </div>';
                         echo '</div>';
@@ -141,4 +118,5 @@ session_start()
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>
