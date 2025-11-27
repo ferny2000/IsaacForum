@@ -1,4 +1,4 @@
-/* styles.css */
+/* styles.css - Optimizado y Responsivo */
 :root {
     --primary-color: #6e3a8e;
     --secondary-color: #4a2d5e;
@@ -7,6 +7,8 @@
     --text-color: #f0f0f0;
     --card-bg: #2d2d2d;
     --card-hover: #3a3a3a;
+    --input-bg: #333333; /* Nuevo: Fondo para inputs */
+    --input-border: #444444; /* Nuevo: Borde para inputs */
 }
 
 /* Estilos generales */
@@ -28,6 +30,7 @@ body {
 /* Navbar */
 .navbar {
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    padding: 0.8rem 1rem; /* Más espacio interno */
 }
 
 .navbar-brand {
@@ -38,19 +41,45 @@ body {
 /* Contenido principal */
 .container {
     flex: 1;
-    padding: 20px 0;
+    padding: 20px 15px; /* Padding lateral para que no pegue al borde en móvil */
+    max-width: 1200px; /* Límite de ancho para pantallas gigantes */
 }
 
 .lead {
     color: #ccc;
 }
 
+/* --- NUEVO: Estilos para Formularios (Inputs oscuros) --- */
+/* Esto arregla que los inputs se vean blancos y feos */
+.form-control {
+    background-color: var(--input-bg) !important;
+    border: 1px solid var(--input-border) !important;
+    color: var(--text-color) !important;
+    padding: 10px 15px;
+}
+
+.form-control:focus {
+    background-color: #404040 !important;
+    border-color: var(--accent-color) !important;
+    box-shadow: 0 0 0 0.25rem rgba(224, 168, 78, 0.25) !important;
+    color: white !important;
+}
+
+/* Etiquetas de formulario */
+.form-label {
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    color: var(--text-color);
+}
+
 /* Tarjetas de sección */
 .section-card {
     background-color: var(--card-bg);
-    transition: all 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
     overflow: hidden;
     position: relative;
+    border-radius: 16px; /* Aseguramos el borde redondeado */
+    height: 100%; /* Para que todas las tarjetas tengan la misma altura */
 }
 
 .section-card::before {
@@ -62,6 +91,7 @@ body {
     height: 100%;
     background: linear-gradient(135deg, rgba(110, 58, 142, 0.1) 0%, rgba(224, 168, 78, 0.05) 100%);
     z-index: 1;
+    pointer-events: none; /* Para que no interfiera con el clic */
 }
 
 .section-card:hover {
@@ -70,6 +100,7 @@ body {
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
 }
 
+/* Iconos */
 .icon-wrapper {
     width: 80px;
     height: 80px;
@@ -81,16 +112,23 @@ body {
     justify-content: center;
     font-size: 2rem;
     color: var(--accent-color);
+    transition: transform 0.3s ease;
+}
+
+.section-card:hover .icon-wrapper {
+    transform: scale(1.1); /* Efecto de crecimiento al pasar el mouse */
 }
 
 .card-title {
     font-weight: 600;
     margin-bottom: 1rem;
+    font-size: 1.25rem;
 }
 
 .card-text {
-    color: #f0f0f0;
+    color: #cccccc;
     font-size: 0.95rem;
+    line-height: 1.5;
 }
 
 /* Textos y acentos */
@@ -102,41 +140,62 @@ body {
     color: var(--accent-color) !important;
 }
 
-/* Bordes redondeados */
-.rounded-4 {
-    border-radius: 16px !important;
-}
-
 /* Footer */
 footer {
     background-color: var(--secondary-color);
     color: white;
-    padding: 1.5rem 0;
+    padding: 2rem 0;
     margin-top: 3rem;
+    border-top: 1px solid rgba(255,255,255,0.1);
 }
 
-.social-icons a {
-    font-size: 1.2rem;
-    transition: color 0.3s;
+/* =========================================
+   RESPONSIVE (Media Queries)
+   ========================================= */
+
+/* Tablets y Móviles grandes (menos de 992px) */
+@media (max-width: 991.98px) {
+    .container {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+    
+    .navbar-collapse {
+        background-color: var(--secondary-color);
+        padding: 1rem;
+        border-radius: 0 0 10px 10px;
+        margin-top: 10px;
+    }
 }
 
-.social-icons a:hover {
-    color: var(--accent-color);
-}
-
-/* Responsive */
-@media (max-width: 768px) {
+/* Móviles (menos de 768px) */
+@media (max-width: 767.98px) {
     .icon-wrapper {
         width: 60px;
         height: 60px;
         font-size: 1.5rem;
+        margin-bottom: 1rem !important; /* Forzar margen */
     }
     
     .card-title {
-        font-size: 1rem;
+        font-size: 1.1rem;
     }
     
     .card-text {
-        font-size: 0.85rem;
+        font-size: 0.9rem;
+    }
+    
+    h2 {
+        font-size: 1.5rem; /* Títulos más pequeños en móvil */
+    }
+
+    /* Ajuste para que las tarjetas no se peguen en móvil */
+    .section-card {
+        margin-bottom: 15px; 
+    }
+    
+    /* Ajuste del formulario en móvil */
+    .bg-dark.p-4 {
+        padding: 1.5rem !important; /* Menos padding interno en formularios */
     }
 }

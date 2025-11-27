@@ -13,7 +13,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Depuración: Ver qué se está recibiendo
     error_log("Intento de login con usuario: $username");
 
-    $stmt = $conn->prepare("SELECT id, username, password, es_admin FROM users WHERE username = ?");
+    $stmt = $conn->prepare("SELECT id, username, password, is_admin FROM users WHERE username = ?");
     $stmt->bind_param("s", $username);
     $stmt->execute();
     $result = $stmt->get_result();
@@ -27,12 +27,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (password_verify($password, $row['password'])) {
             $_SESSION['user_id'] = $row['id'];
             $_SESSION['username'] = $row['username'];
-            $_SESSION['es_admin'] = $row['es_admin'];
+            $_SESSION['is_admin'] = $row['is_admin'];
 
             // Depuración: Verificación exitosa
             error_log("Login exitoso para: $username");
 
-            header("Location: " . ($row['es_admin'] == 1 ? "../admin_panel.php" : "../index.php"));
+            header("Location: " . ($row['is_admin'] == 1 ? "../admin_panel.php" : "../index.php"));
             exit;
         } else {
             // Depuración: Contraseña no coincide

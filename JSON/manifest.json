@@ -1,0 +1,21 @@
+{
+  "name": "Isaac Forum",
+  "short_name": "IsaacForum",
+  "start_url": "./index.php",
+  "display": "standalone",
+  "background_color": "#1a1a1a",
+  "theme_color": "#4a2d5e",
+  "description": "Foro y guía de The Binding of Isaac",
+  "icons": [
+    {
+      "src": "./uploads/684ca20338a8a.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "./uploads/684ca20338a8a.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

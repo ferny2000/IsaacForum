@@ -10,6 +10,8 @@ session_start()
     <link rel="stylesheet" href="./CSS/styles.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="manifest" href="./manifest.json">
+    <meta name="theme-color" content="#4a2d5e">
     <style>
         /* Fijar la barra de búsqueda y navbar */
         .search-container {
@@ -97,7 +99,7 @@ session_start()
                     <li class="nav-item">
                         <a class="nav-link" href="./PHP/logout.php"><i class="fas fa-sign-out-alt me-1"></i>Cerrar sesión</a>
                     </li>
-                    <?php if ($_SESSION['es_admin'] == 1): ?>
+                    <?php if ($_SESSION['is_admin'] == 1): ?>
                         <!-- Si es admin, mostrar la opción de admin -->
                         <li class="nav-item">
                             <a class="nav-link" href="admin_panel.php"><i class="fas fa-cogs me-1"></i>Panel de Admin</a>
@@ -271,11 +273,24 @@ session_start()
     <footer style="background-color: #4a2d5e; color: white; padding: 1.5rem; text-align: center;">
         <p class="mb-0"><i class="fas fa-dungeon me-2"></i>Isaac Forum &copy; 2025</p>
     </footer>
-
+    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <script>
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+            navigator.serviceWorker.register('sw.js')
+                .then(registration => {
+                    console.log('Service Worker registrado con éxito:', registration.scope);
+                })
+                .catch(error => {
+                    console.log('Fallo al registrar el Service Worker:', error);
+                });
+        });
+    }
+    </script>
+    <script>
         // Cargar el JSON dinámicamente usando fetch()
-        fetch('isaac_data.json')
+        fetch('./JSON/isaac_data.json')
             .then(response => response.json())
             .then(data => {
                 // Logros
